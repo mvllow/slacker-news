@@ -2,48 +2,56 @@
 	export let author;
 	export let parentId;
 	export let comment;
-
-	// TODO: Add permalink to comments via comment.url
 </script>
 
 {#if !comment.deleted}
 	<article id={comment.id}>
-		<details open class="pb-6 open:pb-0">
+		<details open class="mt-6 overflow-hidden rounded-md">
 			<summary class="flex items-center gap-1.5 text-subtle">
 				<div class="flex w-full items-center gap-1.5 text-sm font-medium">
 					<a
-						href="/user/{comment.user}"
-						class="font-bold underline-offset-2 hover:underline"
-						class:text-primary={author === comment.user}>{comment.user}</a
+						href="/item/{comment.id}?from={parentId}"
+						class="font-bold"
+						class:text-text={author !== comment.user}
+						class:text-primary={author === comment.user}
+						>{comment.user}&nbsp;
+						<span class="font-medium text-subtle"
+							>{comment.time_ago.replace(/(a|an)\W.*?/, '1 ')}</span
+						></a
 					>
 
-					<a href="#{comment.id}"
-						>{comment.time_ago.replace(/(a|an)\W.*?/, '1 ')}</a
-					>
+					<div class="flex-1" />
 
-					<a href="/item/{comment.id}"> &mdash; Focus</a>
+					<a
+						href="#{comment.id}"
+						class="flex h-6 w-6 items-center justify-center rounded-full bg-surface"
+						><svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="h-3.5 w-3.5"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"
+							/>
+						</svg></a
+					>
 				</div>
 			</summary>
 
-			<div
-				class="py-3 [&>*:first-child]:mt-0 [&>*]:my-3 [&>p]:leading-relaxed [&>pre]:text-sm [&_a]:text-primary [&_a]:underline [&_a]:underline-offset-2"
-			>
+			<div class="formatted-content">
 				{@html comment.content}
 			</div>
-
-			<p class="mb-6">
-				<a
-					href="https://news.ycombinator.com/reply?id={comment.id}&goto=item%3Fid%3D{parentId}%23{comment.id}"
-					class="inline text-sm font-medium tracking-wide text-subtle underline-offset-2 after:inline-block after:whitespace-pre after:content-['_↗'] hover:underline"
-					>Reply</a
-				>
-			</p>
 
 			{#if comment.comments.length > 0}
 				<ul role="list">
 					{#each comment.comments as child}
 						<li class="border-l pl-6">
-							<svelte:self comment={child} />
+							<svelte:self {author} {parentId} comment={child} />
 						</li>
 					{/each}
 				</ul>

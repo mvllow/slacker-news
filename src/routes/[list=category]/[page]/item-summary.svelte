@@ -28,7 +28,7 @@
 	<div class="mt-3 flex flex-wrap items-center gap-1.5">
 		<a
 			href="/item/{item.id}"
-			class="inline-flex items-center justify-center gap-1.5 rounded-full bg-surface px-3 py-1.5 font-mono text-xs font-medium visited:text-subtle"
+			class="inline-flex items-center justify-center gap-1.5 rounded-full bg-surface py-2 pl-2 pr-3 font-mono text-xs font-medium visited:text-subtle"
 		>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"

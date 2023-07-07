@@ -23,3 +23,29 @@
 html {
 	@apply bg-base text-text antialiased;
 }
+
+[id] {
+	@apply scroll-mt-3;
+}
+
+.formatted-content {
+	& > * {
+		@apply mt-3;
+	}
+
+	& > p {
+		@apply leading-relaxed;
+	}
+
+	& > pre {
+		@apply text-sm;
+	}
+
+	& > pre:not(:last-child) {
+		@apply pb-3;
+	}
+
+	& a {
+		@apply whitespace-pre-wrap break-words text-subtle underline underline-offset-2;
+	}
+}

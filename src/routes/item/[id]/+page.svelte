@@ -4,11 +4,15 @@
 	/** @type {import('./$types').PageData} */
 	export let data;
 
-	// TODO: Add "context" button to take you back to threaded view
-	$: isComment = typeof data.title === 'undefined';
+	// TODO: Back link to category/1#itemId
+	$: backLink = data.from ? `/item/${data.from}#${data.id}` : '';
+	$: replyLink = data.from
+		? `https://news.ycombinator.com/reply?id=${data.id}&goto=item%3Fid%3D${data.from}%23${data.id}`
+		: `https://news.ycombinator.com/item?id=${data.id}`;
 </script>
 
 <svelte:head>
+	<!-- Fix data.title on comment types (pass title of OG post?) -->
 	<title>{data.title} | Slacker News</title>
 	<meta
 		name="description"
@@ -18,11 +22,19 @@
 
 <div>
 	<article class="mx-auto max-w-prose">
+		{#if backLink}
+			<a
+				href={backLink}
+				class="inline-flex items-center bg-primary/10 text-primary"
+				>&larr; Back to context</a
+			>
+		{/if}
+
 		<h1>
 			<a
 				href={data.domain ? data.url : `/item/${data.id}`}
 				class="text-lg font-bold"
-				>{isComment ? `Comment by ${data.user}` : data.title}</a
+				>{data.type === 'comment' ? `Comment by ${data.user}` : data.title}</a
 			>
 		</h1>
 
@@ -40,15 +52,15 @@
 		</p>
 
 		{#if data.content}
-			<div class="py-3">
+			<div class="formatted-content">
 				{@html data.content}
 			</div>
 		{/if}
 
-		<div class="mt-3 flex flex-wrap items-center gap-1.5">
+		<div class="mt-6 flex flex-wrap items-center gap-3">
 			<a
 				href="/item/{data.id}"
-				class="inline-flex items-center justify-center gap-1.5 rounded-full bg-surface px-3 py-1.5 font-mono text-xs font-medium"
+				class="inline-flex items-center justify-center gap-1.5 rounded-full bg-surface py-2 pl-2 pr-3 font-mono text-xs font-medium"
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -74,7 +86,7 @@
 			{#if data.user}
 				<a
 					href="/user/{data.user}"
-					class="inline-flex items-center justify-center gap-1.5 rounded-full bg-surface px-3 py-1.5 font-mono text-xs font-medium"
+					class="inline-flex items-center justify-center gap-1.5 rounded-full bg-surface py-2 pl-2 pr-3 font-mono text-xs font-medium"
 				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -94,9 +106,33 @@
 					<p>{data.user}</p>
 				</a>
 			{/if}
+
+			<a
+				href={replyLink}
+				class="inline-flex items-center justify-center gap-1.5 rounded-full bg-surface py-2 pl-2 pr-3 font-mono text-xs font-medium"
+			>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					fill="none"
+					viewBox="0 0 24 24"
+					stroke-width="1.5"
+					stroke="currentColor"
+					class="h-4 w-4 -rotate-45 text-subtle"
+				>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+					/>
+				</svg>
+
+				<p>Reply</p>
+			</a>
 		</div>
 
-		<div id="comments" class="mt-6 border-t pt-6">
+		<div class="h-6 w-full border-b" />
+
+		<div id="comments">
 			{#each data.comments as comment}
 				<Comment author={data.user} parentId={data.id} {comment} />
 			{/each}
