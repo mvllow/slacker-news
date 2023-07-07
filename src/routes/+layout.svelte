@@ -10,7 +10,7 @@
 <header class="px-3 sm:px-10">
 	<nav
 		aria-label="Primary navigation"
-		class="mx-auto grid h-16 w-full max-w-5xl grid-cols-[128px,auto,128px] items-center gap-3 border-b"
+		class="mx-auto grid h-16 w-full max-w-5xl grid-cols-[96px,auto,96px] items-center gap-3 overflow-x-scroll border-b sm:grid-cols-[128px,auto,128px]"
 	>
 		<div class="flex items-center">
 			<a href="/" class="inline-flex">
@@ -40,7 +40,7 @@
 		<div class="flex justify-self-end">
 			<a
 				href="https://news.ycombinator.com/submit"
-				class="inline text-sm font-medium tracking-wide underline-offset-2 after:inline-block after:whitespace-pre after:content-['_↗'] hover:underline"
+				class="inline whitespace-nowrap text-sm font-medium tracking-wide underline-offset-2 after:inline-block after:whitespace-pre after:content-['_↗'] hover:underline"
 				>Submit</a
 			>
 		</div>
