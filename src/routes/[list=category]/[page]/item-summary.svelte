@@ -1,4 +1,6 @@
 <script>
+	import Capsule from '$lib/capsule.svelte';
+
 	/** @type {{ id: number, domain: string, url: string, user: string, title: string, time_ago: string, points: number, comments_count: number }} */
 	export let item;
 	export let index;
@@ -26,10 +28,7 @@
 	</p>
 
 	<div class="mt-3 flex flex-wrap items-center gap-1.5">
-		<a
-			href="/item/{item.id}"
-			class="inline-flex items-center justify-center gap-1.5 rounded-full bg-surface py-2 pl-2 pr-3 font-mono text-xs font-medium visited:text-subtle"
-		>
+		<Capsule href="/item/{item.id}">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				fill="none"
@@ -49,6 +48,6 @@
 				{item.comments_count}
 				{item.comments_count === 1 ? 'comment' : 'comments'}
 			</p>
-		</a>
+		</Capsule>
 	</div>
 </article>

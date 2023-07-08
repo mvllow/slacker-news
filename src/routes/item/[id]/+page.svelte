@@ -1,5 +1,6 @@
 <script>
 	import Comment from './comment.svelte';
+	import Capsule from '$lib/capsule.svelte';
 
 	/** @type {import('./$types').PageData} */
 	export let data;
@@ -58,10 +59,7 @@
 		{/if}
 
 		<div class="mt-6 flex flex-wrap items-center gap-3">
-			<a
-				href="/item/{data.id}"
-				class="inline-flex items-center justify-center gap-1.5 rounded-full bg-surface py-2 pl-2 pr-3 font-mono text-xs font-medium"
-			>
+			<Capsule href="#comments" ignoreVisited>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					fill="none"
@@ -81,13 +79,10 @@
 					{data.comments_count}
 					{data.comments_count === 1 ? 'comment' : 'comments'}
 				</p>
-			</a>
+			</Capsule>
 
 			{#if data.user}
-				<a
-					href="/user/{data.user}"
-					class="inline-flex items-center justify-center gap-1.5 rounded-full bg-surface py-2 pl-2 pr-3 font-mono text-xs font-medium"
-				>
+				<Capsule href="/user/{data.user}">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						fill="none"
@@ -104,13 +99,10 @@
 					</svg>
 
 					<p>{data.user}</p>
-				</a>
+				</Capsule>
 			{/if}
 
-			<a
-				href={replyLink}
-				class="inline-flex items-center justify-center gap-1.5 rounded-full bg-surface py-2 pl-2 pr-3 font-mono text-xs font-medium"
-			>
+			<Capsule href={replyLink} ignoreVisited>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					fill="none"
@@ -127,7 +119,7 @@
 				</svg>
 
 				<p>Reply</p>
-			</a>
+			</Capsule>
 		</div>
 
 		<div class="h-6 w-full border-b" />
