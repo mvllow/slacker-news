@@ -27,7 +27,7 @@
 		{#if backLink}
 			<a
 				href={backLink}
-				class="inline-flex items-center bg-primary/10 text-primary"
+				class="mb-6 inline-flex items-center gap-1.5 font-mono text-xs font-medium text-subtle hover:text-text"
 				>&larr; Back to context</a
 			>
 		{/if}
