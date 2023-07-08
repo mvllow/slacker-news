@@ -66,7 +66,7 @@
 					viewBox="0 0 24 24"
 					stroke-width="1.5"
 					stroke="currentColor"
-					class="h-4 w-4 text-subtle"
+					class="h-4 w-4"
 				>
 					<path
 						stroke-linecap="round"
@@ -89,7 +89,7 @@
 						viewBox="0 0 24 24"
 						stroke-width="1.5"
 						stroke="currentColor"
-						class="h-4 w-4 text-subtle"
+						class="h-4 w-4"
 					>
 						<path
 							stroke-linecap="round"
@@ -109,7 +109,7 @@
 					viewBox="0 0 24 24"
 					stroke-width="1.5"
 					stroke="currentColor"
-					class="h-4 w-4 -rotate-45 text-subtle"
+					class="h-4 w-4 -rotate-45"
 				>
 					<path
 						stroke-linecap="round"
