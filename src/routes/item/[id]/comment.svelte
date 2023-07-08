@@ -1,8 +1,9 @@
 <script>
+	import { LinkIcon } from '$lib/icons';
+
 	export let author;
 	export let parentId;
 	export let comment;
-	import { LinkIcon } from '$lib/icons';
 </script>
 
 {#if !comment.deleted}
