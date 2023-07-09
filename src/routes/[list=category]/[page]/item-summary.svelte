@@ -7,12 +7,14 @@
 	export let index;
 	/** @type string */
 	export let origin;
+
+	$: postLink = `/item/${item.id}/?origin=${origin}`;
 </script>
 
 <article class="py-6 first:pt-0" id={item.id.toString()}>
 	<h2 class="max-w-lg">
 		<a
-			href={item.domain ? item.url : `/item/${item.id}/?origin=${origin}`}
+			href={item.domain ? item.url : postLink}
 			class="text-lg font-bold visited:text-subtle">{item.title}</a
 		>
 	</h2>
@@ -31,7 +33,7 @@
 	</p>
 
 	<div class="mt-3 flex flex-wrap items-center gap-1.5">
-		<Capsule href="/item/{item.id}/?origin={origin}">
+		<Capsule href={postLink}>
 			<ChatBubbleIcon size={16} />
 
 			<p>
