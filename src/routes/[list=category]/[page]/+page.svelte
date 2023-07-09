@@ -20,6 +20,7 @@
 
 	$: start = 1 + (data.page - 1) * PAGE_SIZE;
 	$: next = `/${data.list}/${data.page + 1}`;
+	$: showNextPage = data.page < data.maxPages;
 </script>
 
 <svelte:head>
@@ -51,7 +52,7 @@
 	{/each}
 
 	<div class="mt-10 flex h-20 items-center justify-between">
-		{#if next}
+		{#if showNextPage}
 			<a
 				href={next}
 				class="inline text-xs font-medium uppercase tracking-wide underline-offset-2 after:inline-block after:whitespace-pre after:content-['_→'] hover:underline"
