@@ -6,11 +6,14 @@
 	/** @type {import('./$types').PageData} */
 	export let data;
 
-	// TODO: Back link to category/1#itemId
-	$: backLink = data.from ? `/item/${data.from}#${data.id}` : '';
-	$: replyLink = data.from
-		? `https://news.ycombinator.com/reply?id=${data.id}&goto=item%3Fid%3D${data.from}%23${data.id}`
-		: `https://news.ycombinator.com/item?id=${data.id}`;
+	$: backLink =
+		data.type === 'comment'
+			? `/item/${data.parentId}?origin=${data.origin}#${data.id}`
+			: `/${data.origin}#${data.id}`;
+	$: replyLink =
+		data.type === 'comment'
+			? `https://news.ycombinator.com/reply?id=${data.id}&goto=item%3Fid%3D${data.from}%23${data.id}`
+			: `https://news.ycombinator.com/item?id=${data.id}`;
 </script>
 
 <svelte:head>
@@ -24,13 +27,11 @@
 
 <div>
 	<article class="mx-auto max-w-prose">
-		{#if backLink}
-			<a
-				href={backLink}
-				class="mb-6 inline-flex items-center gap-1.5 font-mono text-xs font-medium text-subtle hover:text-text"
-				>&larr; Back to context</a
-			>
-		{/if}
+		<a
+			href={backLink}
+			class="mb-6 inline-flex items-center gap-1.5 font-mono text-xs font-medium text-subtle hover:text-text"
+			>&larr; Back to context</a
+		>
 
 		<h1>
 			<a
@@ -88,7 +89,12 @@
 
 		<div id="comments">
 			{#each data.comments as comment}
-				<Comment author={data.user} parentId={data.id} {comment} />
+				<Comment
+					author={data.user}
+					parentId={data.parentId ?? data.id}
+					origin={data.origin}
+					{comment}
+				/>
 			{/each}
 		</div>
 	</article>

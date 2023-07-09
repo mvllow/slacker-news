@@ -1,18 +1,29 @@
 <script>
 	import { LinkIcon } from '$lib/icons';
+	import { page } from '$app/stores';
 
 	export let author;
-	export let parentId;
 	export let comment;
+	export let origin;
+	export let parentId;
+
+	console.log('origin from comment', origin);
+	console.log({ cid: comment.id, pid: parentId });
+	console.log($page.url);
 </script>
 
 {#if !comment.deleted}
-	<article id={comment.id}>
-		<details open class="mt-6 overflow-hidden rounded-md">
+	<article
+		id={comment.id}
+		class="target:bg-primary/5 {$page.url.hash === `#${comment.id}`
+			? 'bg-primary/5'
+			: ''}"
+	>
+		<details open class="mt-6">
 			<summary class="flex items-center gap-1.5 text-subtle">
 				<div class="flex w-full items-center gap-1.5 text-sm font-medium">
 					<a
-						href="/item/{comment.id}?from={parentId}"
+						href="/item/{comment.id}?parentId={parentId}&origin={origin}"
 						class="font-bold"
 						class:text-text={author !== comment.user}
 						class:text-primary={author === comment.user}
@@ -41,7 +52,7 @@
 				<ul role="list">
 					{#each comment.comments as child}
 						<li class="border-l pl-6">
-							<svelte:self {author} {parentId} comment={child} />
+							<svelte:self {author} {parentId} {origin} comment={child} />
 						</li>
 					{/each}
 				</ul>
