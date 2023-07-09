@@ -31,7 +31,7 @@
 	</p>
 
 	<div class="mt-3 flex flex-wrap items-center gap-1.5">
-		<Capsule href={`/item/${item.id}/?origin=${origin}`}>
+		<Capsule href="/item/{item.id}/?origin={origin}">
 			<ChatBubbleIcon size={16} />
 
 			<p>
