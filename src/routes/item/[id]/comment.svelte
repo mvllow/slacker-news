@@ -1,18 +1,22 @@
 <script>
 	import { LinkIcon } from '$lib/icons';
+	import { page } from '$app/stores';
 
 	export let author;
-	export let parentId;
 	export let comment;
+	export let origin;
+	export let parentId;
+
+	$: isTarget = $page.url.hash === `#${comment.id}`;
 </script>
 
 {#if !comment.deleted}
-	<article id={comment.id}>
-		<details open class="mt-6 overflow-hidden rounded-md">
+	<article id={comment.id} class:isTarget>
+		<details open class="mt-6">
 			<summary class="flex items-center gap-1.5 text-subtle">
 				<div class="flex w-full items-center gap-1.5 text-sm font-medium">
 					<a
-						href="/item/{comment.id}?from={parentId}"
+						href="/item/{comment.id}?parentId={parentId}&origin={origin}"
 						class="font-bold"
 						class:text-text={author !== comment.user}
 						class:text-primary={author === comment.user}
@@ -41,7 +45,7 @@
 				<ul role="list">
 					{#each comment.comments as child}
 						<li class="border-l pl-6">
-							<svelte:self {author} {parentId} comment={child} />
+							<svelte:self {author} {parentId} {origin} comment={child} />
 						</li>
 					{/each}
 				</ul>
@@ -49,3 +53,21 @@
 		</details>
 	</article>
 {/if}
+
+<style>
+	.isTarget > details > summary,
+	.isTarget > details > .formatted-content {
+		@apply bg-primary/5;
+	}
+	.isTarget > details > summary {
+		@apply -mx-2 -mt-2 border-t-2 border-primary/50 px-2 pt-2;
+	}
+	.isTarget > details > .formatted-content {
+		@apply -mx-2 -mb-2 px-2 pb-2;
+	}
+	/* HACK: Replace margin with padding on first content element
+	 * to maintain target background */
+	.isTarget > details > .formatted-content :global(> *) {
+		@apply mt-0 pt-3;
+	}
+</style>

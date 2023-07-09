@@ -43,7 +43,7 @@
 
 	{#each data.items as item, i}
 		{#if item}
-			<ItemSummary {item} index={start + i} />
+			<ItemSummary {item} index={start + i} origin="{data.list}/{data.page}" />
 			{#if i !== data.items.length - 1}
 				<div class="border-b" />
 			{/if}
