@@ -10,7 +10,7 @@
 <header class="px-3 sm:px-10">
 	<nav
 		aria-label="Primary navigation"
-		class="mx-auto grid h-16 w-full max-w-5xl grid-cols-[96px,auto,96px] items-center gap-3 overflow-x-scroll border-b sm:grid-cols-[128px,auto,128px]"
+		class="mx-auto grid h-16 w-full max-w-5xl grid-cols-[96px,auto,96px] items-center gap-3 overflow-x-auto border-b sm:grid-cols-[128px,auto,128px]"
 	>
 		<div class="flex items-center">
 			<a href="/" class="inline-flex">
