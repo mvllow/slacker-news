@@ -7,18 +7,11 @@
 	export let origin;
 	export let parentId;
 
-	console.log('origin from comment', origin);
-	console.log({ cid: comment.id, pid: parentId });
-	console.log($page.url);
+	$: isTarget = $page.url.hash === `#${comment.id}`;
 </script>
 
 {#if !comment.deleted}
-	<article
-		id={comment.id}
-		class="target:bg-primary/5 {$page.url.hash === `#${comment.id}`
-			? 'bg-primary/5'
-			: ''}"
-	>
+	<article id={comment.id} class:isTarget>
 		<details open class="mt-6">
 			<summary class="flex items-center gap-1.5 text-subtle">
 				<div class="flex w-full items-center gap-1.5 text-sm font-medium">
@@ -60,3 +53,21 @@
 		</details>
 	</article>
 {/if}
+
+<style>
+	.isTarget > details > summary,
+	.isTarget > details > .formatted-content {
+		@apply bg-primary/5;
+	}
+	.isTarget > details > summary {
+		@apply -mx-2 -mt-2 border-t-2 border-primary/50 px-2 pt-2;
+	}
+	.isTarget > details > .formatted-content {
+		@apply -mx-2 -mb-2 px-2 pb-2;
+	}
+	/* HACK: Replace margin with padding on first content element
+	 * to maintain target background */
+	.isTarget > details > .formatted-content :global(> *) {
+		@apply mt-0 pt-3;
+	}
+</style>

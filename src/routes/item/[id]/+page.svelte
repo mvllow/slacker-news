@@ -8,11 +8,13 @@
 
 	$: backLink =
 		data.type === 'comment'
-			? `/item/${data.parentId}?origin=${data.origin}#${data.id}`
-			: `/${data.origin}#${data.id}`;
+			? data.parentId &&
+			  `/item/${data.parentId}?origin=${data.origin}#${data.id}`
+			: data.origin && `/${data.origin}#${data.id}`;
+
 	$: replyLink =
 		data.type === 'comment'
-			? `https://news.ycombinator.com/reply?id=${data.id}&goto=item%3Fid%3D${data.from}%23${data.id}`
+			? `https://news.ycombinator.com/reply?id=${data.id}&goto=item%3Fid%3D${data.parentId}%23${data.id}`
 			: `https://news.ycombinator.com/item?id=${data.id}`;
 </script>
 
@@ -27,11 +29,13 @@
 
 <div>
 	<article class="mx-auto max-w-prose">
-		<a
-			href={backLink}
-			class="mb-6 inline-flex items-center gap-1.5 font-mono text-xs font-medium text-subtle hover:text-text"
-			>&larr; Back to context</a
-		>
+		{#if backLink}
+			<a
+				href={backLink}
+				class="mb-6 inline-flex items-center gap-1.5 font-mono text-xs font-medium text-subtle hover:text-text"
+				>&larr; Back to context</a
+			>
+		{/if}
 
 		<h1>
 			<a
