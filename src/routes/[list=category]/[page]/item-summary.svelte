@@ -5,10 +5,8 @@
 	/** @type {{ id: number, domain: string, url: string, user: string, title: string, time_ago: string, points: number, comments_count: number }} */
 	export let item;
 	export let index;
-	/** @type string */
-	export let origin;
 
-	$: postLink = `/item/${item.id}/?origin=${origin}`;
+	$: postLink = `/item/${item.id}`;
 </script>
 
 <article

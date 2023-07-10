@@ -6,13 +6,9 @@
 	/** @type {import('./$types').PageData} */
 	export let data;
 
-	$: postLink = `/${data.origin}#${data.id}`;
-	$: postCommentLink = `/item/${data.parentId}?origin=${data.origin}#${data.id}`;
+	$: postCommentLink = `/item/${data.parentId}#${data.id}`;
 
-	$: backLink =
-		data.type === 'comment'
-			? data.parentId && postCommentLink
-			: data.origin && postLink;
+	$: backLink = data.type === 'comment' && data.parentId && postCommentLink;
 
 	$: replyLink =
 		data.type === 'comment'
@@ -98,7 +94,6 @@
 				<Comment
 					author={data.user}
 					parentId={data.parentId ?? data.id}
-					origin={data.origin}
 					{comment}
 				/>
 			{/each}
