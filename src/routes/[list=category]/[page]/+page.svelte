@@ -48,12 +48,12 @@
 {/each}
 
 {#if previous || next}
-	<div class="flex items-center gap-3 py-page-gutter">
+	<div class="mt-page-gutter flex items-center gap-3">
 		{#if previous}
 			<a
 				href={previous}
-				class="inline font-mono text-xs font-medium text-subtle underline-offset-2 before:inline-block before:whitespace-pre before:content-['←_'] hover:underline"
-				>{data.page - 1}</a
+				class="flex items-center justify-center rounded-full bg-surface px-3 py-1.5 font-mono text-xs font-medium"
+				><span class="text-subtle">&larr;</span>&nbsp;{data.page - 1}</a
 			>
 		{/if}
 
@@ -62,8 +62,8 @@
 		{#if next}
 			<a
 				href={next}
-				class="inline font-mono text-xs font-medium text-subtle underline-offset-2 after:inline-block after:whitespace-pre after:content-['_→'] hover:underline"
-				>{data.page + 1}</a
+				class="flex items-center justify-center rounded-full bg-surface px-3 py-1.5 font-mono text-xs font-medium"
+				>{data.page + 1}&nbsp;<span class="text-subtle">&rarr;</span></a
 			>
 		{/if}
 	</div>
