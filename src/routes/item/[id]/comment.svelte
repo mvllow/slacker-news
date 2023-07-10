@@ -2,15 +2,20 @@
 	import { LinkIcon } from '$lib/icons';
 	import { page } from '$app/stores';
 
-	export let author;
+	/** @type {import('$lib/types').Item} */
 	export let comment;
+
+	/** @type string */
+	export let author;
+
+	/** @type string */
 	export let rootId;
 
 	$: isTarget = $page.url.hash === `#${comment.id}`;
 </script>
 
 {#if !comment.deleted}
-	<article id={comment.id} class:isTarget>
+	<article id={comment.id.toString()} class:isTarget>
 		<details open class="mt-6">
 			<summary class="flex items-center gap-1.5 text-subtle">
 				<div class="flex w-full items-center gap-1.5 text-sm font-medium">
