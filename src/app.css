@@ -37,6 +37,9 @@ html {
 }
 
 .formatted-content {
+	/* TODO: Why is this necessary to prevent pre tags from overflowing? */
+	@apply grid;
+
 	& > * {
 		@apply mt-3;
 	}
@@ -46,7 +49,7 @@ html {
 	}
 
 	& > pre {
-		@apply text-sm;
+		@apply overflow-x-auto text-sm;
 	}
 
 	& > pre:not(:last-child) {
@@ -54,6 +57,6 @@ html {
 	}
 
 	& a {
-		@apply whitespace-pre-wrap break-words text-subtle underline underline-offset-2;
+		@apply whitespace-pre-wrap break-all text-subtle underline underline-offset-2;
 	}
 }
