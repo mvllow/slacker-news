@@ -1,4 +1,7 @@
 <script>
+	import Capsule from '$lib/capsule.svelte';
+	import { ChatBubbleIcon, DocumentTextIcon, HeartIcon } from '$lib/icons';
+
 	/** @type {import('./$types').PageData} */
 	export let data;
 </script>
@@ -11,47 +14,38 @@
 <h1 class="sr-only">{data.id}</h1>
 
 <div class="space-y-6">
-	<div class="space-y-1.5">
+	<div>
 		<p class="text-lg font-bold sm:text-3xl sm:tracking-tight">
 			{data.id}
 		</p>
 
-		<p class="text-sm text-subtle">
+		<p class="mt-1.5 text-sm text-subtle">
 			Joined {data.created}, with {data.karma} karma
 		</p>
+
+		<div class="mt-6 flex flex-wrap items-center gap-1.5">
+			<Capsule href="https://news.ycombinator.com/submitted?id={data.id}">
+				<DocumentTextIcon size={16} />
+				<p>Submissions</p>
+			</Capsule>
+
+			<Capsule href="https://news.ycombinator.com/threads?id={data.id}">
+				<ChatBubbleIcon size={16} />
+				<p>Comments</p>
+			</Capsule>
+
+			<Capsule href="https://news.ycombinator.com/submitted?id={data.id}">
+				<HeartIcon size={16} />
+				<p>Favorites</p>
+			</Capsule>
+		</div>
 	</div>
 
 	{#if data.about}
-		<h2 class="font-bold">About</h2>
+		<div class="space-y-1.5">
+			<h2 class="font-semibold">About</h2>
 
-		<div class="space-y-3">
 			{@html '<p>' + data.about}
 		</div>
 	{/if}
-
-	<h2 class="font-bold">Links</h2>
-
-	<ul role="list" class="[&_a]:leading-loose">
-		<li>
-			<a
-				href="https://news.ycombinator.com/submitted?id={data.id}"
-				class="inline text-sm font-medium tracking-wide underline-offset-2 after:inline-block after:whitespace-pre after:content-['_↗'] hover:underline"
-				>Submissions</a
-			>
-		</li>
-		<li>
-			<a
-				href="https://news.ycombinator.com/threads?id={data.id}"
-				class="inline text-sm font-medium tracking-wide underline-offset-2 after:inline-block after:whitespace-pre after:content-['_↗'] hover:underline"
-				>Comments</a
-			>
-		</li>
-		<li>
-			<a
-				href="https://news.ycombinator.com/favorites?id={data.id}"
-				class="inline text-sm font-medium tracking-wide underline-offset-2 after:inline-block after:whitespace-pre after:content-['_↗'] hover:underline"
-				>Favourites</a
-			>
-		</li>
-	</ul>
 </div>

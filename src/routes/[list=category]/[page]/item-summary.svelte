@@ -11,7 +11,7 @@
 	$: postLink = `/item/${item.id}/?origin=${origin}`;
 </script>
 
-<article class="py-6 first:pt-0" id={item.id.toString()}>
+<article class="border-b py-6 first:pt-0" id={item.id.toString()}>
 	<h2 class="max-w-lg">
 		<a
 			href={item.domain ? item.url : postLink}
@@ -32,10 +32,9 @@
 		{/if}
 	</p>
 
-	<div class="mt-3 flex flex-wrap items-center gap-1.5">
+	<div class="mt-6 flex flex-wrap items-center gap-1.5">
 		<Capsule href={postLink}>
 			<ChatBubbleIcon size={16} />
-
 			<p>
 				{item.comments_count}
 				{item.comments_count === 1 ? 'comment' : 'comments'}
