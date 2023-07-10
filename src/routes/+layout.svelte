@@ -61,14 +61,14 @@
 			class="mx-auto grid max-w-content grid-cols-1 gap-6 overflow-x-auto sm:grid-cols-3"
 		>
 			<div>
-				<p class="font-bold">Slacker News</p>
+				<p class="font-serif text-sm font-semibold italic">Slacker News</p>
 			</div>
 
 			<div>
-				<h2 class="font-medium">Product</h2>
+				<h2 class="text-sm font-medium">Product</h2>
 				<ul
 					role="list"
-					class="mt-3 [&>li]:leading-loose [&_a:hover]:text-text [&_a]:text-subtle"
+					class="mt-3 text-sm [&>li]:leading-loose [&_a:hover]:text-text [&_a]:text-subtle"
 				>
 					<li>
 						<a href="https://github.com/tastejs/hacker-news-pwas"
@@ -83,10 +83,10 @@
 			</div>
 
 			<div>
-				<h2 class="font-medium">Get Involved</h2>
+				<h2 class="text-sm font-medium">Community</h2>
 				<ul
 					role="list"
-					class="mt-3 [&>li]:leading-loose [&_a:hover]:text-text [&_a]:text-subtle"
+					class="mt-3 text-sm [&>li]:leading-loose [&_a:hover]:text-text [&_a]:text-subtle"
 				>
 					<li>
 						<a
