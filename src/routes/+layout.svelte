@@ -11,7 +11,7 @@
 	<header class="border-b px-page-gutter">
 		<nav
 			aria-label="Primary navigation"
-			class="mx-auto grid h-20 w-full max-w-shell grid-cols-[96px,auto,96px] items-center gap-3 overflow-x-auto sm:grid-cols-[128px,auto,128px]"
+			class="mx-auto grid max-w-shell grid-cols-2 grid-rows-2 items-center justify-between gap-3 py-page-gutter sm:grid-cols-[128px,auto,128px] sm:grid-rows-1"
 		>
 			<div class="flex items-center">
 				<a href="/" class="inline-flex">
@@ -25,7 +25,9 @@
 				</a>
 			</div>
 
-			<ul class="flex items-center sm:justify-center">
+			<ul
+				class="row-start-2 -ml-3 flex items-center sm:row-start-auto sm:ml-0 sm:justify-center"
+			>
 				{#each categories as category}
 					<li class="text-subtle">
 						<a
@@ -55,7 +57,9 @@
 	</main>
 
 	<footer class="border-t p-page-gutter">
-		<div class="mx-auto grid max-w-content grid-cols-3 gap-6">
+		<div
+			class="mx-auto grid max-w-content grid-cols-1 gap-6 overflow-x-auto sm:grid-cols-3"
+		>
 			<div>
 				<p class="font-bold">Slacker News</p>
 			</div>
