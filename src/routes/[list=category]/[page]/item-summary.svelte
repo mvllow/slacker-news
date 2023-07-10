@@ -10,8 +10,8 @@
 </script>
 
 <article
-	class="py-6 first:pt-0 [&:not(:last-child)]:border-b"
 	id={item.id.toString()}
+	class="py-6 first:pt-0 [&:not(:last-of-type)]:border-b"
 >
 	<h2 class="max-w-lg">
 		<a

@@ -11,7 +11,7 @@
 	<header class="border-b px-page-gutter">
 		<nav
 			aria-label="Primary navigation"
-			class="mx-auto grid max-w-shell grid-cols-2 grid-rows-2 items-center justify-between gap-3 py-page-gutter sm:grid-cols-[128px,auto,128px] sm:grid-rows-1"
+			class="mx-auto grid max-w-shell grid-cols-2 grid-rows-2 items-center justify-between gap-6 py-3 sm:grid-cols-[128px,auto,128px] sm:grid-rows-1"
 		>
 			<div class="flex items-center">
 				<a href="/" class="inline-flex">
@@ -56,7 +56,7 @@
 		</div>
 	</main>
 
-	<footer class="border-t p-page-gutter">
+	<footer class="mt-20 border-t p-page-gutter">
 		<div
 			class="mx-auto grid max-w-content grid-cols-1 gap-6 overflow-x-auto sm:grid-cols-3"
 		>
