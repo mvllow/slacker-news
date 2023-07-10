@@ -2,7 +2,7 @@
 	import Capsule from '$lib/capsule.svelte';
 	import { ChatBubbleIcon } from '$lib/icons';
 
-	/** @type {{ id: number, domain: string, url: string, user: string, title: string, time_ago: string, points: number, comments_count: number }} */
+	/** @type {import('$lib/types').Item} */
 	export let item;
 	export let index;
 
