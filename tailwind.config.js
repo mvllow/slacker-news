@@ -6,6 +6,13 @@ export default {
 			aria: {
 				page: 'current="page"',
 			},
+			spacing: {
+				'page-gutter': 'var(--page-gutter)',
+			},
+			maxWidth: {
+				shell: 'var(--shell-width)',
+				content: 'var(--content-width)',
+			},
 			colors: {
 				base: 'hsl(var(--color-base) / <alpha-value>)',
 				surface: 'hsl(var(--color-surface) / <alpha-value>)',

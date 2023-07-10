@@ -19,8 +19,7 @@
 	const PAGE_SIZE = 30;
 
 	$: start = 1 + (data.page - 1) * PAGE_SIZE;
-	$: next = `/${data.list}/${data.page + 1}`;
-	$: showNextPage = data.page < data.maxPages;
+	$: next = data.page < data.maxPages && `/${data.list}/${data.page + 1}`;
 </script>
 
 <svelte:head>
@@ -33,33 +32,26 @@
 	/>
 </svelte:head>
 
-<div class="mx-auto max-w-prose">
-	{#if showingCachedResults}
-		<div
-			class="inline-flex cursor-default select-none rounded-full bg-primary/10 px-3 py-1.5 text-sm font-medium text-primary"
-		>
-			Showing cached results
-		</div>
-	{/if}
-
-	{#each data.items as item, i}
-		{#if item}
-			<ItemSummary {item} index={start + i} origin="{data.list}/{data.page}" />
-			{#if i !== data.items.length - 1}
-				<div class="border-b" />
-			{/if}
-		{/if}
-	{/each}
-
-	<div class="mt-10 flex h-20 items-center justify-between">
-		{#if showNextPage}
-			<a
-				href={next}
-				class="inline text-xs font-medium uppercase tracking-wide underline-offset-2 after:inline-block after:whitespace-pre after:content-['_→'] hover:underline"
-				>Page {next.replace(/\/.*?\//, '')}</a
-			>
-		{/if}
-
-		<a href="/" class="text-sm text-subtle">Slacker News</a>
+{#if showingCachedResults}
+	<div
+		class="inline-flex cursor-default select-none rounded-full bg-primary/10 px-3 py-1.5 text-sm font-medium text-primary"
+	>
+		Showing cached results
 	</div>
-</div>
+{/if}
+
+{#each data.items as item, i}
+	{#if item}
+		<ItemSummary {item} index={start + i} origin="{data.list}/{data.page}" />
+	{/if}
+{/each}
+
+{#if next}
+	<div class="flex items-center gap-3 py-page-gutter">
+		<a
+			href={next}
+			class="inline font-mono text-xs font-medium text-subtle underline-offset-2 after:inline-block after:whitespace-pre after:content-['_→'] hover:underline"
+			>{data.page + 1}</a
+		>
+	</div>
+{/if}

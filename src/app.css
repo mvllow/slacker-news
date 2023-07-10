@@ -3,6 +3,14 @@
 @tailwind utilities;
 
 :root {
+	--page-gutter: 1rem;
+	--shell-width: 54rem;
+	--content-width: 36rem;
+
+	@media screen(sm) {
+		--page-gutter: 2rem;
+	}
+
 	color-scheme: light dark;
 
 	--color-base: 32deg 57% 95%;
