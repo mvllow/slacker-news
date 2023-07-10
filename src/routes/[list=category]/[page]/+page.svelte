@@ -43,7 +43,7 @@
 
 {#each data.items as item, i}
 	{#if item}
-		<ItemSummary {item} index={start + i} origin="{data.list}/{data.page}" />
+		<ItemSummary {item} index={start + i} />
 	{/if}
 {/each}
 

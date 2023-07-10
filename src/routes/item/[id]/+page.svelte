@@ -6,17 +6,13 @@
 	/** @type {import('./$types').PageData} */
 	export let data;
 
-	$: postLink = `/${data.origin}#${data.id}`;
-	$: postCommentLink = `/item/${data.parentId}?origin=${data.origin}#${data.id}`;
+	$: postCommentLink = `/item/${data.rootId}#${data.id}`;
 
-	$: backLink =
-		data.type === 'comment'
-			? data.parentId && postCommentLink
-			: data.origin && postLink;
+	$: backLink = data.type === 'comment' && data.rootId && postCommentLink;
 
 	$: replyLink =
 		data.type === 'comment'
-			? `https://news.ycombinator.com/reply?id=${data.id}&goto=item%3Fid%3D${data.parentId}%23${data.id}`
+			? `https://news.ycombinator.com/reply?id=${data.id}&goto=item%3Fid%3D${data.rootId}%23${data.id}`
 			: `https://news.ycombinator.com/item?id=${data.id}`;
 </script>
 
@@ -95,12 +91,7 @@
 
 		<div id="comments">
 			{#each data.comments as comment}
-				<Comment
-					author={data.user}
-					parentId={data.parentId ?? data.id}
-					origin={data.origin}
-					{comment}
-				/>
+				<Comment author={data.user} rootId={data.rootId ?? data.id} {comment} />
 			{/each}
 		</div>
 	</article>
