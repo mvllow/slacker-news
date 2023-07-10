@@ -58,7 +58,7 @@
 	</article>
 {/if}
 
-<style>
+<style lang="postcss">
 	.isTarget > details > summary,
 	.isTarget > details > .formatted-content {
 		@apply bg-primary/5;
