@@ -19,6 +19,7 @@
 	const PAGE_SIZE = 30;
 
 	$: start = 1 + (data.page - 1) * PAGE_SIZE;
+	$: previous = data.page > 1 && `/${data.list}/${data.page - 1}`;
 	$: next = data.page < data.maxPages && `/${data.list}/${data.page + 1}`;
 </script>
 
@@ -46,12 +47,24 @@
 	{/if}
 {/each}
 
-{#if next}
+{#if previous || next}
 	<div class="flex items-center gap-3 py-page-gutter">
-		<a
-			href={next}
-			class="inline font-mono text-xs font-medium text-subtle underline-offset-2 after:inline-block after:whitespace-pre after:content-['_→'] hover:underline"
-			>{data.page + 1}</a
-		>
+		{#if previous}
+			<a
+				href={previous}
+				class="inline font-mono text-xs font-medium text-subtle underline-offset-2 before:inline-block before:whitespace-pre before:content-['←_'] hover:underline"
+				>{data.page - 1}</a
+			>
+		{/if}
+
+		<div class="flex-1" />
+
+		{#if next}
+			<a
+				href={next}
+				class="inline font-mono text-xs font-medium text-subtle underline-offset-2 after:inline-block after:whitespace-pre after:content-['_→'] hover:underline"
+				>{data.page + 1}</a
+			>
+		{/if}
 	</div>
 {/if}
