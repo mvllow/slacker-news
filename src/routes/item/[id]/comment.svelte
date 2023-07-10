@@ -4,7 +4,7 @@
 
 	export let author;
 	export let comment;
-	export let parentId;
+	export let rootId;
 
 	$: isTarget = $page.url.hash === `#${comment.id}`;
 </script>
@@ -15,7 +15,7 @@
 			<summary class="flex items-center gap-1.5 text-subtle">
 				<div class="flex w-full items-center gap-1.5 text-sm font-medium">
 					<a
-						href="/item/{comment.id}?parentId={parentId}"
+						href="/item/{comment.id}?rootId={rootId}"
 						class="font-bold"
 						class:text-text={author !== comment.user}
 						class:text-primary={author === comment.user}
@@ -44,7 +44,7 @@
 				<ul role="list">
 					{#each comment.comments as child}
 						<li class="border-l pl-6">
-							<svelte:self {author} {parentId} comment={child} />
+							<svelte:self {author} {rootId} comment={child} />
 						</li>
 					{/each}
 				</ul>
