@@ -57,6 +57,6 @@ html {
 	}
 
 	& a {
-		@apply whitespace-pre-wrap break-all text-subtle underline underline-offset-2;
+		@apply inline-block max-w-[200px] truncate align-top text-subtle underline underline-offset-2;
 	}
 }
