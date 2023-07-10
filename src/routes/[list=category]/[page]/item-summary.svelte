@@ -11,7 +11,10 @@
 	$: postLink = `/item/${item.id}/?origin=${origin}`;
 </script>
 
-<article class="border-b py-6 first:pt-0" id={item.id.toString()}>
+<article
+	class="py-6 first:pt-0 [&:not(:last-child)]:border-b"
+	id={item.id.toString()}
+>
 	<h2 class="max-w-lg">
 		<a
 			href={item.domain ? item.url : postLink}
