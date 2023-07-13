@@ -35,28 +35,3 @@ html {
 [id] {
 	@apply scroll-mt-3;
 }
-
-.formatted-content {
-	/* TODO: Why is this necessary to prevent pre tags from overflowing? */
-	@apply grid;
-
-	& > * {
-		@apply mt-3;
-	}
-
-	& > p {
-		@apply leading-relaxed;
-	}
-
-	& > pre {
-		@apply overflow-x-auto text-sm;
-	}
-
-	& > pre:not(:last-child) {
-		@apply pb-3;
-	}
-
-	& a {
-		@apply inline-block max-w-[200px] truncate align-top text-subtle underline underline-offset-2;
-	}
-}
