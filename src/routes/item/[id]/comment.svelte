@@ -1,4 +1,5 @@
 <script>
+	import Content from '$lib/content.svelte';
 	import { LinkIcon } from '$lib/icons';
 	import { page } from '$app/stores';
 
@@ -41,9 +42,7 @@
 				</div>
 			</summary>
 
-			<div class="formatted-content">
-				{@html comment.content}
-			</div>
+			<Content content={comment.content} />
 
 			{#if comment.comments.length > 0}
 				<ul role="list">

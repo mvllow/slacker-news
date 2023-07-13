@@ -1,5 +1,6 @@
 <script>
 	import Comment from './comment.svelte';
+	import Content from '$lib/content.svelte';
 	import Capsule from '$lib/capsule.svelte';
 	import { ChatBubbleIcon, UserCircleIcon, ArrowCircleIcon } from '$lib/icons';
 
@@ -57,9 +58,7 @@
 		</p>
 
 		{#if data.content}
-			<div class="formatted-content">
-				{@html data.content}
-			</div>
+			<Content content={data.content} />
 		{/if}
 
 		<div class="mt-6 flex flex-wrap items-center gap-3">
