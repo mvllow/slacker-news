@@ -1,9 +1,16 @@
 <script>
 	export let content = '';
+
+	function formatContent(content) {
+		return content.replaceAll(
+			/<p>&gt; (.*?)</gm,
+			"<p class='blockquote'>&gt; $1<"
+		);
+	}
 </script>
 
 <div class="post">
-	{@html content}
+	{@html formatContent(content)}
 </div>
 
 <style>
@@ -47,5 +54,9 @@
 		overflow: hidden;
 		text-overflow: ellipsis;
 		vertical-align: top;
+	}
+
+	.post :global(.blockquote) {
+		color: theme('colors.subtle');
 	}
 </style>
