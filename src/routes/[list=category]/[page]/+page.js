@@ -15,7 +15,7 @@ export async function load({ params, fetch }) {
 	const apiDetails$ = fetch(`https://api.hnpwa.com/v0`).then(toJson);
 
 	const items$ = fetch(
-		`https://api.hnpwa.com/v0/${list}/${params.page}.json`
+		`https://api.hnpwa.com/v0/${list}/${params.page}.json`,
 	).then(toJson);
 
 	const [apiDetails, items] = await Promise.all([apiDetails$, items$]);
@@ -25,7 +25,7 @@ export async function load({ params, fetch }) {
 		 * @param {HNewsAPIDetails} x
 		 * @returns
 		 */
-		(x) => x.topic === list
+		(x) => x.topic === list,
 	);
 
 	return {
