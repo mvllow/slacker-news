@@ -1,10 +1,12 @@
 <script>
 	export let content = '';
 
+	/** @param {string} content */
 	function formatContent(content) {
-		return content.replaceAll(
-			/<p>&gt; (.*?)</gm,
-			"<p class='blockquote'>&gt; $1<"
+		return (
+			content
+				// Style blockquotes
+				.replaceAll(/<p>(<i>)?(&gt;.*?)(<p>)?/gm, "<p class='blockquote'>$1$2")
 		);
 	}
 </script>
