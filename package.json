@@ -8,22 +8,22 @@
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch",
-		"lint": "prettier --plugin-search-dir . --check .",
-		"format": "prettier --plugin-search-dir . --write ."
+		"lint": "prettier --check .",
+		"format": "prettier --write --plugin prettier-plugin-svelte --plugin prettier-plugin-tailwindcss ."
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^2.1.0",
-		"@sveltejs/kit": "^1.21.0",
-		"autoprefixer": "^10.4.14",
-		"postcss": "^8.4.24",
-		"prettier": "^2.8.8",
-		"prettier-plugin-svelte": "^2.10.1",
-		"prettier-plugin-tailwindcss": "^0.3.0",
-		"svelte": "^4.0.1",
-		"svelte-check": "^3.4.4",
-		"tailwindcss": "^3.3.2",
+		"@sveltejs/kit": "^1.22.6",
+		"autoprefixer": "^10.4.15",
+		"postcss": "^8.4.27",
+		"prettier": "^3.0.1",
+		"prettier-plugin-svelte": "^3.0.3",
+		"prettier-plugin-tailwindcss": "0.5.2",
+		"svelte": "^4.2.0",
+		"svelte-check": "^3.5.0",
+		"tailwindcss": "^3.3.3",
 		"typescript": "^5.1.6",
-		"vite": "^4.3.9"
+		"vite": "^4.4.9"
 	},
 	"type": "module"
 }
