@@ -18,11 +18,14 @@
 </script>
 
 <svelte:head>
-	<!-- Fix data.title on comment types (pass title of OG post?) -->
-	<title>{data.title} | Slacker News</title>
+	<title
+		>{data.title ? data.title : `Comment by ${data.user}`} | Slacker News</title
+	>
 	<meta
 		name="description"
-		content="Hacker News discussion about {data.title}"
+		content={data.title
+			? `Hacker News discussion about "${data.title}"`
+			: `Hacker News discussion comments`}
 	/>
 </svelte:head>
 
