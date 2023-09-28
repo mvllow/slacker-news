@@ -1,14 +1,7 @@
 <script>
-	export let content = '';
+	import { formatContent } from '$lib/parser';
 
-	/** @param {string} content */
-	function formatContent(content) {
-		return (
-			content
-				// Style blockquotes
-				.replaceAll(/<p>(<i>)?(&gt;.*?)(<p>)?/gm, "<p class='blockquote'>$1$2")
-		);
-	}
+	export let content = '';
 </script>
 
 <div class="post">
