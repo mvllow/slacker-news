@@ -13,10 +13,11 @@
 	id={item.id.toString()}
 	class="py-6 first:pt-0 [&:not(:last-of-type)]:border-b"
 >
-	<h2 class="max-w-lg">
+	<h2 class="mx-auto max-w-prose">
 		<a
 			href={item.domain ? item.url : postLink}
-			class="text-lg font-bold visited:text-subtle">{item.title}</a
+			class="text-lg font-bold underline-offset-2 visited:text-subtle hover:underline"
+			>{item.title}</a
 		>
 	</h2>
 

@@ -22,7 +22,7 @@
 				<div class="flex w-full items-center gap-1.5">
 					<a
 						href="/item/{comment.id}?rootId={rootId}"
-						class="text-sm decoration-text hover:underline {author ===
+						class="text-sm decoration-text underline-offset-2 hover:underline {author ===
 						comment.user
 							? 'font-bold text-primary'
 							: 'font-medium text-subtle'}"

@@ -42,7 +42,7 @@
 		<h1>
 			<a
 				href={data.domain ? data.url : `/item/${data.id}`}
-				class="text-lg font-bold"
+				class="text-lg font-bold underline-offset-2 hover:underline"
 				>{data.type === 'comment' ? `Comment by ${data.user}` : data.title}</a
 			>
 		</h1>
