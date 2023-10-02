@@ -13,18 +13,23 @@
 
 	color-scheme: light dark;
 
-	--color-base: 32deg 57% 95%;
-	--color-surface: 32deg 57% 92%;
-	--color-subtle: 206deg 23% 31%;
-	--color-text: 206deg 23% 3%;
-	--color-primary: 347deg 29% 59%;
+	--color-base: 32deg 52% 95%;
+	--color-surface: 32deg 52% 92%;
+	--color-overlay: 32deg 52% 90%;
+	--color-muted: 32deg 9% 52%;
+	--color-subtle: 32deg 9% 34%;
+	--color-text: 32deg 9% 16%;
+
+	--color-primary: 32deg 95% 44%;
 
 	@media (prefers-color-scheme: dark) {
 		--color-base: 333deg 5% 9%;
 		--color-surface: 333deg 5% 14%;
-		--color-subtle: 60deg 5% 62%;
-		--color-text: 60deg 5% 94%;
-		--color-primary: 347deg 50% 71%;
+		--color-overlay: 333deg 5% 19%;
+		--color-muted: 60deg 5% 48%;
+		--color-subtle: 60deg 5% 80%;
+		--color-text: 60deg 5% 98%;
+		--color-primary: 43deg 96% 56%;
 	}
 }
 

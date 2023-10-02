@@ -18,7 +18,7 @@
 {#if !comment.deleted}
 	<article id={comment.id.toString()} class:isTarget>
 		<details open class="mt-6">
-			<summary class="flex items-center gap-1.5 text-subtle/40">
+			<summary class="flex items-center gap-1.5 text-muted">
 				<div class="flex w-full items-center gap-1.5">
 					<a
 						href="/item/{comment.id}?rootId={rootId}"
@@ -27,7 +27,7 @@
 							? 'font-bold text-primary'
 							: 'font-medium text-subtle'}"
 						>{comment.user}&nbsp;
-						<span class="text-xs font-medium text-subtle/60"
+						<span class="text-xs font-medium text-muted"
 							>{comment.time_ago.replace(/(a|an)\W.*?/, '1 ')}</span
 						></a
 					>
@@ -36,7 +36,7 @@
 
 					<a
 						href="#{comment.id}"
-						class="flex h-6 w-6 items-center justify-center rounded-full text-subtle/60 hover:bg-surface hover:text-text"
+						class="flex h-6 w-6 items-center justify-center rounded-full text-muted hover:bg-overlay hover:text-text"
 					>
 						<LinkIcon size={14} />
 					</a>

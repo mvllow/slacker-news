@@ -16,12 +16,14 @@ export default {
 			colors: {
 				base: 'hsl(var(--color-base) / <alpha-value>)',
 				surface: 'hsl(var(--color-surface) / <alpha-value>)',
+				overlay: 'hsl(var(--color-overlay) / <alpha-value>)',
+				muted: 'hsl(var(--color-muted) / <alpha-value>)',
 				subtle: 'hsl(var(--color-subtle) / <alpha-value>)',
 				text: 'hsl(var(--color-text) / <alpha-value>)',
 				primary: 'hsl(var(--color-primary) / <alpha-value>)',
 			},
 			borderColor: (theme) => ({
-				DEFAULT: theme('colors.surface', 'currentColor'),
+				DEFAULT: theme('colors.overlay', 'currentColor'),
 			}),
 			ringColor: {
 				DEFAULT: 'hsl(var(--color-primary) / 20)',

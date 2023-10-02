@@ -1,5 +1,6 @@
 <script>
 	import { browser } from '$app/environment';
+	import Capsule from '$lib/capsule.svelte';
 	import ItemSummary from './item-summary.svelte';
 
 	/** @type {import('./$types').PageData} */
@@ -50,21 +51,13 @@
 {#if previous || next}
 	<div class="mt-page-gutter flex items-center gap-3">
 		{#if previous}
-			<a
-				href={previous}
-				class="flex items-center justify-center rounded-full bg-surface px-3 py-1.5 font-mono text-xs font-medium"
-				><span class="text-subtle">&larr;</span>&nbsp;{data.page - 1}</a
-			>
+			<Capsule href={previous}>&larr; Page {data.page - 1}</Capsule>
 		{/if}
 
 		<div class="flex-1" />
 
 		{#if next}
-			<a
-				href={next}
-				class="flex items-center justify-center rounded-full bg-surface px-3 py-1.5 font-mono text-xs font-medium"
-				>{data.page + 1}&nbsp;<span class="text-subtle">&rarr;</span></a
-			>
+			<Capsule href={next}>Page {data.page + 1} &rarr;</Capsule>
 		{/if}
 	</div>
 {/if}
