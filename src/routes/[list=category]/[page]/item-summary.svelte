@@ -22,13 +22,13 @@
 	</h2>
 
 	<p class="mt-1.5 flex cursor-default select-none items-center gap-1.5">
-		<span class="flex items-center text-xs font-medium text-subtle">
+		<span class="flex shrink-0 items-center text-xs font-medium text-subtle">
 			{item.time_ago.replace(/(a|an)\W.*?/, '1 ')}
 		</span>
 
 		{#if item.domain}
 			<span
-				class="inline-flex items-center font-mono text-xs font-medium text-subtle"
+				class="inline-flex items-center break-all font-mono text-xs font-medium text-subtle"
 				>({item.domain})
 			</span>
 		{/if}
