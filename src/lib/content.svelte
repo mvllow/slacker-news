@@ -26,6 +26,7 @@
 
 	.post :global(> *) {
 		margin-top: theme('spacing.3');
+		max-width: 100%;
 	}
 
 	.post :global(> p) {
