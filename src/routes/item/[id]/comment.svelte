@@ -1,4 +1,5 @@
 <script>
+	import Capsule from '$lib/capsule.svelte';
 	import Content from '$lib/content.svelte';
 	import { LinkIcon } from '$lib/icons';
 	import { page } from '$app/stores';
@@ -11,6 +12,8 @@
 
 	/** @type string */
 	export let rootId;
+
+	let limit = 3;
 
 	$: isTarget = $page.url.hash === `#${comment.id}`;
 </script>
@@ -46,7 +49,7 @@
 			<div class="ml-1 border-l pl-5" class:isTarget>
 				<Content content={comment.content} />
 
-				{#if comment.comments.length > 0}
+				{#if comment.level < limit - 1 && comment.comments.length > 0}
 					<ul role="list">
 						{#each comment.comments as child}
 							<li>
@@ -54,6 +57,13 @@
 							</li>
 						{/each}
 					</ul>
+				{:else if comment.comments_count > 0}
+					<p class="pt-3">
+						<Capsule href="/item/{comment.id}?rootId={rootId}"
+							>{comment.comments_count}
+							{comment.comments_count === 1 ? 'reply' : 'replies'} &rarr;</Capsule
+						>
+					</p>
 				{/if}
 			</div>
 		</details>
