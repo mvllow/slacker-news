@@ -92,9 +92,24 @@
 		<div class="h-6 w-full border-b" />
 
 		<div id="comments">
-			{#each data.comments as comment}
-				<Comment author={data.user} rootId={data.rootId ?? data.id} {comment} />
-			{/each}
+			{#if data.comments.length > 0}
+				{#each data.comments as comment}
+					<Comment
+						author={data.user}
+						rootId={data.rootId ?? data.id}
+						{comment}
+					/>
+				{/each}
+			{:else}
+				<div
+					class="mt-6 flex flex-wrap items-center justify-between gap-6 rounded-xl border p-6"
+				>
+					<p class="font-semibold">No comments yet</p>
+					<Capsule href={replyLink}
+						>Contribute on Hacker News&nbsp;&nearr;</Capsule
+					>
+				</div>
+			{/if}
 		</div>
 	</article>
 </div>
