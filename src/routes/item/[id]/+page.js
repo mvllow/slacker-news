@@ -1,8 +1,11 @@
-/** @type {import('./$types').PageLoad} */
+/**
+ * @type {import('./$types').PageLoad}
+ * @returns {Promise<import('$lib/types').Item>}
+ */
 export async function load({ params, fetch, url }) {
 	const res = await fetch(`https://api.hnpwa.com/v0/item/${params.id}.json`);
 	return {
 		...(await res.json()),
-		rootId: url.searchParams.get('rootId'),
+		root_id: url.searchParams.get('rootId'),
 	};
 }

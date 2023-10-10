@@ -10,7 +10,7 @@
 	/** @type string */
 	export let author;
 
-	/** @type string */
+	/** @type number */
 	export let rootId;
 
 	let limit = 3;

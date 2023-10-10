@@ -1,5 +1,6 @@
 export type Item = {
 	id: number;
+	root_id?: number;
 	title: string;
 	points: number | null;
 	user: string | null;

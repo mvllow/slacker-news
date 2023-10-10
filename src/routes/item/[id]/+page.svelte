@@ -7,13 +7,9 @@
 	/** @type {import('./$types').PageData} */
 	export let data;
 
-	$: postCommentLink = `/item/${data.rootId}#${data.id}`;
-
-	$: backLink = data.type === 'comment' && data.rootId && postCommentLink;
-
 	$: replyLink =
 		data.type === 'comment'
-			? `https://news.ycombinator.com/reply?id=${data.id}&goto=item%3Fid%3D${data.rootId}%23${data.id}`
+			? `https://news.ycombinator.com/reply?id=${data.id}&goto=item%3Fid%3D${data.root_id}%23${data.id}`
 			: `https://news.ycombinator.com/item?id=${data.id}`;
 </script>
 
@@ -31,9 +27,9 @@
 
 <div>
 	<article class="mx-auto max-w-prose">
-		{#if backLink}
+		{#if data.type === 'comment' && data.root_id}
 			<a
-				href={backLink}
+				href="/item/{data.root_id}#{data.id}"
 				class="mb-6 inline-flex items-center gap-1.5 font-mono text-xs font-medium text-subtle hover:text-text"
 				>&larr; Back to context</a
 			>
@@ -95,8 +91,8 @@
 			{#if data.comments.length > 0}
 				{#each data.comments as comment}
 					<Comment
-						author={data.user}
-						rootId={data.rootId ?? data.id}
+						author={data.user ?? ''}
+						rootId={data.root_id ?? data.id}
 						{comment}
 					/>
 				{/each}
