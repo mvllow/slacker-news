@@ -16,11 +16,11 @@
 		 */
 		display: grid;
 
-		overflow-wrap: break-word;
 		/*
 		 * Prevent long words from overflowing the container.
 		 * http://localhost:5173/item/36714868
 		 */
+		overflow-wrap: break-word;
 		word-break: break-word;
 	}
 

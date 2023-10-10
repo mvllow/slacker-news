@@ -40,3 +40,10 @@ html {
 [id] {
 	@apply scroll-mt-3;
 }
+
+@layer utilities {
+	.break-long-words {
+		overflow-wrap: break-word;
+		word-break: break-word;
+	}
+}

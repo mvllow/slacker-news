@@ -16,7 +16,7 @@
 	<h2 class="mx-auto max-w-prose">
 		<a
 			href={item.domain ? item.url : postLink}
-			class="text-lg font-bold underline-offset-2 visited:text-subtle hover:underline"
+			class="break-long-words text-lg font-bold underline-offset-2 visited:text-subtle hover:underline"
 			>{item.title}</a
 		>
 	</h2>
