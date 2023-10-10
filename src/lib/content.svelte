@@ -10,10 +10,6 @@
 
 <style>
 	.post {
-		/* 
-		 * TODO: Why is this necessary to prevent pre tags from overflowing? 
-		 * http://localhost:5173/item/36684315
-		 */
 		display: grid;
 
 		/*
@@ -24,7 +20,7 @@
 		word-break: break-word;
 	}
 
-	.post :global(> *) {
+	.post :global(> *:not(:empty)) {
 		margin-top: theme('spacing.3');
 		max-width: 100%;
 	}
@@ -40,6 +36,12 @@
 
 	.post :global(> pre:not(:last-child)) {
 		padding-bottom: theme('spacing.3');
+	}
+
+	.post :global(> pre:has(code)) {
+		padding-top: theme('spacing.3');
+		padding-bottom: theme('spacing.3');
+		background: theme('colors.surface');
 	}
 
 	.post :global(a) {
