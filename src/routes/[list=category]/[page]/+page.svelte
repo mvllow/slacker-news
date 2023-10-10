@@ -17,9 +17,6 @@
 		}
 	}
 
-	const PAGE_SIZE = 30;
-
-	$: start = 1 + (data.page - 1) * PAGE_SIZE;
 	$: previous = data.page > 1 && `/${data.list}/${data.page - 1}`;
 	$: next = data.page < data.maxPages && `/${data.list}/${data.page + 1}`;
 </script>
@@ -42,9 +39,9 @@
 	</div>
 {/if}
 
-{#each data.items as item, i}
+{#each data.items as item}
 	{#if item}
-		<ItemSummary {item} index={start + i} />
+		<ItemSummary {item} />
 	{/if}
 {/each}
 

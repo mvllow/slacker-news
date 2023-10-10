@@ -4,7 +4,6 @@
 
 	/** @type {import('$lib/types').Item} */
 	export let item;
-	export let index;
 
 	$: postLink = `/item/${item.id}`;
 </script>
