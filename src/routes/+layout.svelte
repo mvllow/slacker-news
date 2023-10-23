@@ -75,6 +75,7 @@
 							>API Reference</a
 						>
 					</li>
+					<li><a href="https://hnrss.github.io">hnrss</a></li>
 					<li>
 						<a href="https://github.com/mvllow/slacker-news">Source on GitHub</a
 						>

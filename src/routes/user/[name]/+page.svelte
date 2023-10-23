@@ -1,6 +1,11 @@
 <script>
 	import Capsule from '$lib/capsule.svelte';
-	import { ChatBubbleIcon, DocumentTextIcon, HeartIcon } from '$lib/icons';
+	import {
+		ChatBubbleIcon,
+		DocumentTextIcon,
+		HeartIcon,
+		RssIcon,
+	} from '$lib/icons';
 
 	/** @type {import('./$types').PageData} */
 	export let data;
@@ -37,6 +42,11 @@
 			<Capsule href="https://news.ycombinator.com/submitted?id={data.id}">
 				<HeartIcon size={16} />
 				<p>Favorites</p>
+			</Capsule>
+
+			<Capsule href="https://hnrss.org/user?id={data.id}">
+				<RssIcon size={16} />
+				<p>Follow via RSS</p>
 			</Capsule>
 		</div>
 	</div>
