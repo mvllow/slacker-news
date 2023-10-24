@@ -1,6 +1,7 @@
 <script>
 	import { browser } from '$app/environment';
 	import Capsule from '$lib/capsule.svelte';
+	import { ArrowPathIcon } from '$lib/icons';
 	import ItemSummary from './item-summary.svelte';
 
 	/** @type {import('./$types').PageData} */
@@ -32,11 +33,10 @@
 </svelte:head>
 
 {#if showingCachedResults}
-	<div
-		class="inline-flex cursor-default select-none rounded-full bg-primary/10 px-3 py-1.5 text-sm font-medium text-primary"
-	>
-		Showing cached results
-	</div>
+	<Capsule banner href="javascript:window.location.href=window.location.href">
+		<ArrowPathIcon size={16} />
+		<span>Showing potentially outdated content</span>
+	</Capsule>
 {/if}
 
 {#each data.items as item}
