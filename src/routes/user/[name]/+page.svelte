@@ -1,5 +1,6 @@
 <script>
 	import Capsule from '$lib/capsule.svelte';
+	import Content from '$lib/content.svelte';
 	import {
 		ChatBubbleIcon,
 		DocumentTextIcon,
@@ -9,6 +10,19 @@
 
 	/** @type {import('./$types').PageData} */
 	export let data;
+
+	/** @param {string} text */
+	function linkify(text) {
+		// Modified linkify regex:
+		// - replaced "\/" with "&#x2F;"
+		// - removed ftp and file detection
+		// https://stackoverflow.com/a/8943487
+		const urlRegex =
+			/(\b(https?):&#x2F;&#x2F;[-A-Z0-9+&@#&#x2F;%?=~_|!:,.;]*[-A-Z0-9+&@#&#x2F;%=~_|])/gi;
+		return text.replace(urlRegex, function (url) {
+			return '<a href="' + url + '">' + url + '</a>';
+		});
+	}
 </script>
 
 <svelte:head>
@@ -51,11 +65,13 @@
 		</div>
 	</div>
 
-	{#if data.about}
-		<div class="space-y-1.5">
-			<h2 class="font-semibold">About</h2>
+	<div>
+		<h2 class="font-semibold">About</h2>
 
-			{@html '<p>' + data.about}
-		</div>
-	{/if}
+		{#if data.about}
+			<Content content={'<p>' + linkify(data.about)} />
+		{:else}
+			<p class="font-serif italic">No information</p>
+		{/if}
+	</div>
 </div>
