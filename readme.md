@@ -4,11 +4,11 @@
 
 ## Data sources
 
-Slacker News retrieves data from an [unofficial API](https://github.com/tastejs/hacker-news-pwas) and uses [Hacker News RSS](https://hnrss.github.io) for realtime RSS feeds.
+Slacker News retrieves data from [HNPWA API](https://github.com/tastejs/hacker-news-pwas/blob/master/docs/api.md) and uses [hnrss.org](https://hnrss.org) for realtime RSS feeds. Thanks to these services for allowing us to provide an alternative interface to Hacker News.
 
 ## Contributing
 
-Pull requests are welcome and appreciated! We are using [SvelteKit](https://kit.svelte.dev) and [TailwindCSS](https://tailwindcss.com) for the frontend. For content, we are using the [HNPWA API](https://github.com/tastejs/hacker-news-pwas/blob/master/docs/api.md).
+Pull requests are welcome and appreciated! We are using [SvelteKit](https://kit.svelte.dev) and [TailwindCSS](https://tailwindcss.com) for the frontend.
 
 ### Setup environment
 
