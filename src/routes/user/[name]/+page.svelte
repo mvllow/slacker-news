@@ -26,7 +26,7 @@
 </script>
 
 <svelte:head>
-	<title>{data.id} | Slacker News</title>
+	<title>{data.id} • Slacker News</title>
 	<meta name="description" content="Hacker News user profile for {data.id}" />
 </svelte:head>
 

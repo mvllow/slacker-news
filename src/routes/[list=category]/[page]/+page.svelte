@@ -24,7 +24,7 @@
 
 <svelte:head>
 	<title
-		>{`${data.list.charAt(0).toUpperCase()}${data.list.slice(1)}`} | Slacker News</title
+		>{`${data.list.charAt(0).toUpperCase()}${data.list.slice(1)}`} • Slacker News</title
 	>
 	<meta
 		name="description"

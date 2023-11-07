@@ -15,7 +15,7 @@
 
 <svelte:head>
 	<title
-		>{data.title ? data.title : `Comment by ${data.user}`} | Slacker News</title
+		>{data.title ? data.title : `Comment by ${data.user}`} • Slacker News</title
 	>
 	<meta
 		name="description"
