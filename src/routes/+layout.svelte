@@ -1,5 +1,6 @@
 <script>
 	import { page } from '$app/stores';
+	import { BookmarkIcon } from '$lib/icons';
 	import '../app.css';
 
 	$: current = $page.url.pathname.split('/')[1];
@@ -38,8 +39,10 @@
 			</ul>
 
 			<div class="flex items-center justify-self-end">
-				<a href="https://news.ycombinator.com/submit" class="nav-link">Submit</a
-				>
+				<a href="/library" class="nav-link">
+					<BookmarkIcon size={16} thickness={2} />
+					<span>Library</span>
+				</a>
 			</div>
 		</nav>
 	</header>

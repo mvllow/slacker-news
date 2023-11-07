@@ -1,16 +1,49 @@
 <script>
+	import { browser } from '$app/environment';
 	import Comment from './comment.svelte';
 	import Content from '$lib/content.svelte';
 	import Capsule from '$lib/capsule.svelte';
-	import { ChatBubbleIcon, UserCircleIcon, ArrowCircleIcon } from '$lib/icons';
+	import {
+		ArrowCircleIcon,
+		BookmarkIcon,
+		ChatBubbleIcon,
+		UserCircleIcon,
+	} from '$lib/icons';
+	import { onMount } from 'svelte';
 
 	/** @type {import('./$types').PageData} */
 	export let data;
+
+	let saved = false;
 
 	$: replyLink =
 		data.type === 'comment'
 			? `https://news.ycombinator.com/reply?id=${data.id}&goto=item%3Fid%3D${data.root_id}%23${data.id}`
 			: `https://news.ycombinator.com/item?id=${data.id}`;
+
+	onMount(() => {
+		saved = !!getSavedArticles()[data.id];
+	});
+
+	function getSavedArticles() {
+		const savedArticles = JSON.parse(localStorage.getItem('articles') ?? '{}');
+		return savedArticles;
+	}
+
+	function favoriteArticle() {
+		if (browser) {
+			const savedArticles = getSavedArticles();
+			if (!!savedArticles[data.id]) {
+				savedArticles[data.id] = undefined;
+				saved = false;
+			} else {
+				console.log(data.title);
+				savedArticles[data.id] = data.title;
+				saved = true;
+			}
+			localStorage.setItem('articles', JSON.stringify(savedArticles));
+		}
+	}
 </script>
 
 <svelte:head>
@@ -83,6 +116,21 @@
 
 				<p>Reply</p>
 			</Capsule>
+
+			{#if data.title}
+				<button
+					on:click={favoriteArticle}
+					class="flex h-8 w-8 items-center justify-center gap-1.5 rounded-full bg-surface text-sm hover:bg-overlay {saved
+						? '[&>svg]:fill-current'
+						: ''}"
+					title={saved ? 'Remove from library' : 'Add to library'}
+				>
+					<span class="sr-only"
+						>{saved ? 'Remove from library' : 'Add to library'}</span
+					>
+					<BookmarkIcon size={16} />
+				</button>
+			{/if}
 		</div>
 
 		<div class="h-6 w-full border-b" />
