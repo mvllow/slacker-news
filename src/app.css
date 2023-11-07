@@ -19,7 +19,6 @@
 	--color-muted: 32deg 9% 52%;
 	--color-subtle: 32deg 9% 34%;
 	--color-text: 32deg 9% 16%;
-
 	--color-primary: 32deg 95% 44%;
 
 	@media (prefers-color-scheme: dark) {
