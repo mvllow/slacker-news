@@ -38,7 +38,7 @@ function formatCodeBlocks(content) {
 }
 
 /**
- * Replace links to news.ycombinator.com with links to news.mellow.dev
+ * Replace links to news.ycombinator.com with local links
  *
  * @param {string} content
  **/
@@ -46,7 +46,7 @@ function replaceOriginalLinks(content) {
 	// TODO(test): link is replaced [http://localhost:5173/item/37690996]
 	return content.replaceAll(
 		/<a href=".*news\.ycombinator\.com.*item\?id=(.*)">(.*)<\/a>/gm,
-		"<a href='https://news.mellow.dev/item/$1'>$2</a>",
+		"<a href='/item/$1'>$2</a>",
 	);
 }
 
