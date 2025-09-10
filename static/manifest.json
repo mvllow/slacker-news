@@ -1,0 +1,47 @@
+{
+	"short_name": "Slacker News",
+	"name": "Slacker News",
+	"description": "Elegant news reader",
+	"start_url": "/",
+	"icons": [
+		{
+			"src": "favicon.png",
+			"type": "image/png",
+			"sizes": "512x512"
+		}
+	],
+	"display": "standalone",
+	"scope": "/",
+	"shortcuts": [
+		{
+			"name": "\"Top\" posts",
+			"short_name": "Top",
+			"description": "View \"Top\" posts",
+			"url": "/top/1"
+		},
+		{
+			"name": "\"New\" posts",
+			"short_name": "New",
+			"description": "View \"New\" posts",
+			"url": "/new/1"
+		},
+		{
+			"name": "\"Show\" posts",
+			"short_name": "Show",
+			"description": "View \"Show\" posts",
+			"url": "/show/1"
+		},
+		{
+			"name": "\"Ask\" posts",
+			"short_name": "Ask",
+			"description": "View \"Ask\" posts",
+			"url": "/ask/1"
+		},
+		{
+			"name": "\"Jobs\" posts",
+			"short_name": "Jobs",
+			"description": "View \"Jobs\" posts",
+			"url": "/jobs/1"
+		}
+	]
+}
